@@ -17,7 +17,7 @@
 </div>
 <div class="row container-fluid">
     <div class="col-md-2">
-        <div class="list-group hidden-xs" ng-repeat="category in allCategories | orderBy : 'name'">
+        <div class="list-group hidden-xs hidden-sm" ng-repeat="category in allCategories | orderBy : 'name'">
             <p class="btn btn-default btn-block" ng-class="{active : isCategoryActive(category)}"
                ng-click="selectCategory(category.id)">
                 {{category.name}}
@@ -25,7 +25,7 @@
         </div>
 
 
-        <div class="visible-xs visible-xs-block" dropdown dropdown-append-to-body>
+        <div class="visible-xs visible-xs-block visible-sm visible-sm-block" dropdown dropdown-append-to-body>
             <button type="button" class="btn btn-default btn-block dropdown-toggle" dropdown-toggle>
                 {{categoryButtonText}} <span class="caret"></span>
             </button>
