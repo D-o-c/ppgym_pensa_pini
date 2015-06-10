@@ -1,0 +1,59 @@
+f<div class="row container-fluid">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+        <ul class="pager pull-left">
+            <li ng-class="{disabled : nameOrdering()}">
+                <a href="" ng-click="sort = ['name']">Ordina per nome</a>
+            </li>
+            <li ng-class="{disabled : !nameOrdering()}">
+                <a href="" ng-click="sort = ['level', 'name']">Ordina per livello</a>
+            </li>
+        </ul>
+        <div class="pull-right">
+            <dir-pagination-controls></dir-pagination-controls>
+        </div>
+
+    </div>
+</div>
+<div class="row container-fluid">
+    <div class="col-md-2">
+        <div class="list-group hidden-xs" ng-repeat="category in allCategories | orderBy : 'name'">
+            <p class="btn btn-default btn-block" ng-class="{active : isCategoryActive(category)}"
+               ng-click="selectCategory(category.id)">
+                {{category.name}}
+            </p>
+        </div>
+
+
+        <div class="visible-xs visible-xs-block" dropdown dropdown-append-to-body>
+            <button type="button" class="btn btn-default btn-block dropdown-toggle" dropdown-toggle>
+                {{categoryButtonText}} <span class="caret"></span>
+            </button>
+            <div class="dropdown-menu" role="menu">
+                <div ng-repeat="category in allCategories | orderBy : 'name'">
+                    <p class="btn btn-default btn-block" ng-class="{active : isCategoryActive(category)}"
+                       ng-click="selectCategory(category.id)">
+                        {{category.name}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10 panel">
+        <div class="alert alert-info" ng-show="allCourses === null" role="alert">
+            Downloading courses...<br>
+            <small>Se i corsi non dovessero comparire, aggiorna la pagina e assicurati
+                di essere collegato a internet</small>
+        </div>
+        <table class="table table-hover">
+            <tr dir-paginate="course in allCourses | orderBy:sort | courseByCategories:selectedCategory |
+                                itemsPerPage: 8" class="animate-repeat">
+                <td>
+                    <a ui-sref="singleCourse({id:{{course.id}}})" class="title">{{course.name}}</a><br>
+                    <small>{{getLevel(course)}}</small>
+                    <p class="text-justify" ng-bind-html="course.short_description"></p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

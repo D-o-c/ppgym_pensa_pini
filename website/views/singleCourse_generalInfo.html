@@ -1,0 +1,22 @@
+<div class="panel panel-default panel-heading">
+    <p class="text-justify" ng-bind-html="currentCourse.description"></p>
+    <div class="row">
+        <div class="col-md-6">
+            <p>Per saperne di più su questa categoria di corsi
+                <a href="#/categories/{{currentCourse.cid}}">
+                    clicca qui.
+                </a>
+            </p>
+            <div>
+                <carousel interval="myInterval">
+                    <slide ng-repeat="slide in slides" active="slide.active">
+                        <img ng-src="{{slide.img_url}}" style="margin: auto;">
+                    </slide>
+                </carousel>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p class="text-justify" ng-bind-html="currentCourse.who_should"></p>
+        </div>
+    </div>
+</div>

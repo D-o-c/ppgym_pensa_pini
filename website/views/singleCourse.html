@@ -1,0 +1,18 @@
+<div class="container-fluid well">
+    <h1 class="page-title">{{currentCourse.name}}</h1>
+    <div class="alert alert-info" ng-show="currentCourse === null" role="alert">
+        Downloading course...<br>
+        <small>Se le informazioni sul corso non dovessero comparire, aggiorna la pagina e assicurati
+            di essere collegato a internet</small>
+    </div>
+    <tabset ng-hide="currentCourse === null">
+        <tab heading="Informazioni Generali">
+            <ng-include src="'views/singleCourse_generalInfo.html'"></ng-include>
+        </tab>
+        <tab heading="Stanza & Orari">
+            <ng-include src="'views/singleCourse_roomAndSchedule.html'"></ng-include>
+        </tab>
+
+    </tabset>
+
+</div>

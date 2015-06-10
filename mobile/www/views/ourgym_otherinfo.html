@@ -1,0 +1,38 @@
+<div class="panel panel-default panel-heading">
+
+
+
+    <div class="row panel-body">
+
+        <div class="col-md-6">
+            <div class="panel-default">
+                <h4>La nostra storia</h4>
+                <p class="text-justify" ng-bind-html="generalInfo.story"></p>
+            </div>
+            <div class="panel-default">
+                <h4>PPGYM per il Sociale</h4>
+                <p class="text-justify" ng-bind-html="generalInfo.social"></p>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-default">
+
+                <div class="embed-responsive embed-responsive-16by9">
+                    <youtube-video class="embed-responsive-item" video-id="videoOther"></youtube-video>
+                </div>
+
+
+            </div>
+            <div class="panel panel-default">
+                <carousel interval="myInterval">
+                    <slide ng-repeat="slide in slides" active="slide.active">
+                        <img ng-src="{{slide.image}}" style="margin:auto;">
+                    </slide>
+                </carousel>
+            </div>
+        </div>
+
+
+    </div>
+</div>

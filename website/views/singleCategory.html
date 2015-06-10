@@ -1,0 +1,51 @@
+<div class="alert alert-info" ng-show="currentCategory === null" role="alert">
+    Downloading category...<br>
+    <small>Se la catergoria non dovesse comparire, aggiorna la pagina e assicurati
+        di essere collegato a internet</small>
+</div>
+
+<div class="container-fluid" ng-hide="currentCategory === null">
+    <h1 class="page-title">{{currentCategory.name}}</h1>
+
+    <div class="panel">
+        <div class="row panel-body">
+            <div class="col-md-7">
+                <p class="text-justify" ng-bind-html="currentCategory.description"></p>
+
+            </div>
+            <div class="col-md-5">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <youtube-video class="embed-responsive-item"
+                                   video-id="currentCategory.videocategoria"></youtube-video>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row panel-body">
+            <div class="col-md-4">
+                <div>
+                    <carousel interval="interval">
+                        <slide ng-repeat="slide in slides" active="slide.active">
+                            <img ng-src="{{slide.img_url}}" style="margin:auto;">
+                        </slide>
+                    </carousel>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+            {{currentCategory.whoshould}}
+            </div>
+            <div class="col-md-4">
+
+                <strong>gli istruttori che seguono i corsi di {{currentCategory.name}} sono:</strong>
+                <ul ng-repeat="categoryInstructor in categoryInstructors">
+
+                    <li><a ui-sref="singleInstructor({id:{{categoryInstructor.instructor}}})">
+                        {{categoryInstructor.name}}
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

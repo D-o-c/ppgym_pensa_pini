@@ -1,0 +1,23 @@
+<div class="container-fluid panel">
+    <table class="table table-hover">
+        <tr ng-repeat="category in allCategories | orderBy:'name'" class="animate-repeat">
+            <td>
+                <div class="row">
+                    <div class="col-md-2">
+                        <img ng-src="{{category.img_url}}"
+                             class="img-responsive img-thumbnail img-circle">
+                    </div>
+                    <div class="col-md-10">
+                        <a ui-sref="singleCategory({id:{{category.id}}})" class="title">{{category.name}}</a>
+                        <p class="text-justify" ng-bind-html="category.short_description"></p>
+                        <div class="text-right">
+                            <a href="" class="btn btn-default" ng-click="seeCourse(category.id)">
+                                Vedi corsi {{category.name}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

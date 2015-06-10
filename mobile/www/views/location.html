@@ -1,0 +1,49 @@
+<div class="row well panel">
+    <div class="col-md-6">
+        <div id="map"></div>
+    </div>
+    <div class="col-md-6" ng-init="travelMode = 3">
+        <div class="panel-default" ng-bind-html="generalInfo.Address"></div>
+        <div class="panel-default" ng-bind-html="generalInfo.Directions"></div>
+        <br/>
+
+
+        <form>
+            <div class="form-group">
+                <label for="startCity">Cerca indicazioni per arrivare alla palestra</label>
+                <input type="text" class="form-control" id="startCity" ng-model="startAddress" required
+                       placeholder="Inserisci l'indirizzo di partenza" ng-maxlength="55">
+            </div>
+            <p>Come vuoi raggiungerci?</p>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="driving" ng-model="travelMode" value="1">
+                    In auto
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="transit" ng-model="travelMode" value="2">
+                    Con i mezzi pubblici
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="walking" ng-model="travelMode" value="3">
+                    A piedi
+                </label>
+            </div>
+
+            <button class="btn btn-default" ng-click="calcRoute(startAddress, travelMode)">
+                Calcola percorso
+            </button>
+            <button class="btn btn-default" ng-click="calcRouteFromPosition(travelMode)" formnovalidate>
+                Calcola percorso da posizione attuale
+            </button>
+        </form>
+    </div>
+    <div class="container-fluid" style="color: white;">
+        <div id="directionsPanel" style="float:right;width: 100%;height: 100%; color: white;"></div>
+    </div>
+</div>
+
