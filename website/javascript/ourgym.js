@@ -30,7 +30,7 @@ angular.module('ppgym')
             directionsDisplay = new google.maps.DirectionsRenderer({ 'map': map });
             directionsDisplay.setPanel(document.getElementById("directionsPanel"));
 
-            var contentString = info.Address;
+            var contentString = '<p style="color: black;">' + info.Address + '</p>';
             var compiled = $compile(contentString)($scope);
 
             var infowindow = new google.maps.InfoWindow({
